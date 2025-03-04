@@ -16,10 +16,9 @@
 ### Клонирование репозитория (SSH)
 
 ```bash
-git clone git@github.com:your-username/backend-app.git
+git clone git@github.com:tsikhavi/backend-app.git
 cd backend-app
 ```
-````
 
 ### Установка зависимостей
 
