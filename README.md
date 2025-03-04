@@ -82,7 +82,7 @@ npm run start:prodwatch
 
 ---
 
-##  4. Тестирование API
+## 4. Тестирование API
 
 ### Запрос на **изменение баланса** (POST)
 
@@ -120,4 +120,3 @@ chmod +x benchmark.sh
 Результаты тестирования сохранятся в `benchmark_results.txt`.
 
 ---
-

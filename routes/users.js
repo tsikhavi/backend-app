@@ -1,14 +1,14 @@
-const express = require('express');
+const express = require("express");
 
 const router = express.Router();
-const { body, param, validationResult } = require('express-validator');
-const { updateBalance } = require('../services/userService');
+const { body, param, validationResult } = require("express-validator");
+const { updateBalance } = require("../services/userService");
 
 // Проверка баланса пользователя и обновление в реальном времени
 router.patch(
-  '/:id/balance',
-  param('id').isInt().toInt(),
-  body('amount').isInt().toInt(),
+  "/:id/balance",
+  param("id").isInt().toInt(),
+  body("amount").isInt().toInt(),
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -25,9 +25,9 @@ router.patch(
 );
 
 router.post(
-  '/:id/balance',
-  param('id').isInt().toInt(),
-  body('amount').isInt().toInt(),
+  "/:id/balance",
+  param("id").isInt().toInt(),
+  body("amount").isInt().toInt(),
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

@@ -1,11 +1,11 @@
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
-const process = require('process');
+const fs = require("fs");
+const path = require("path");
+const Sequelize = require("sequelize");
+const process = require("process");
 
 const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require('../config/config.json')[env];
+const env = process.env.NODE_ENV || "development";
+const config = require("../config/config.json")[env];
 
 const db = {};
 
@@ -16,19 +16,16 @@ const sequelize = config.use_env_variable
 // Читаем файлы моделей и подключаем их
 fs.readdirSync(__dirname)
   .filter(
-    file =>
-      file.endsWith('.js') && file !== basename && !file.endsWith('.test.js')
+    (file) => file.endsWith(".js") && file !== basename && !file.endsWith(".test.js")
   )
-  .forEach(file => {
+  .forEach((file) => {
     const modelPath = path.join(__dirname, file);
-    // Отключаем ESLint для динамического require()
     // eslint-disable-next-line import/no-dynamic-require, global-require
     const model = require(modelPath)(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   });
 
-// Связываем модели, если есть ассоциации
-Object.keys(db).forEach(modelName => {
+Object.keys(db).forEach((modelName) => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }

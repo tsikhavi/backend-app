@@ -1,7 +1,7 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
-const buildFolder = path.join(__dirname, 'dist');
+const buildFolder = path.join(__dirname, "dist");
 
 // Создаём папку dist, если её нет
 if (!fs.existsSync(buildFolder)) {
@@ -9,19 +9,19 @@ if (!fs.existsSync(buildFolder)) {
 }
 
 // Копируем файлы
-const filesToCopy = ['package.json', '.env', 'migrate.js', 'app.js'];
-filesToCopy.forEach(file => {
+const filesToCopy = ["package.json", ".env", "migrate.js", "app.js"];
+filesToCopy.forEach((file) => {
   const src = path.join(__dirname, file);
   const dest = path.join(buildFolder, file);
   fs.copyFileSync(src, dest);
 });
 
 // Копируем папки
-const foldersToCopy = ['bin', 'routes', 'models', 'services', 'config'];
-foldersToCopy.forEach(folder => {
+const foldersToCopy = ["bin", "routes", "models", "services", "config"];
+foldersToCopy.forEach((folder) => {
   const src = path.join(__dirname, folder);
   const dest = path.join(buildFolder, folder);
   fs.cpSync(src, dest, { recursive: true });
 });
 
-console.log('✅ Build complete. All necessary files copied to dist/');
+console.log("✅ Build complete. All necessary files copied to dist/");
